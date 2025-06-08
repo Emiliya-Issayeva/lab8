@@ -25,13 +25,21 @@ Vn={S, Noun phrase, Verb phrase, Adjective phrase, Noun, Verb, Adjective}
 S - начальный символ.
 
 P={
+
 S → <Noun phrase> <Verb phrase>
+
 <Noun phrase> → <Noun> ∣ <Adjective phrase> <Noun> ∣ ε
+
 <Verb phrase> → <Verb> <Noun phrase>
+
 <Adjective phrase> → <Adjective phrase> <Adjective> ∣ ε
+
 <Noun> → flight | passenger | trip | morning
+
 <Verb> → is | prefers | like | need | depend | fly
+
 <Adjective> → non-stop | first | direct
+
 }
 
 Язык:
@@ -57,14 +65,23 @@ A ∈ Vn - нетерминальный символ,
 Схема вызова функций:
 
 Parse()                           // запуск анализа
+
 └── ParseS()                      // разбор по правилу S → Noun phrase Verb phrase
+
     ├── ParseNounPhrase()        // левая часть
+    
     │   └── ParseAdjectivePhrase()  // если есть прилагательные
+    
     │       └── ParseAdjectivePhrase()  // рекурсивно, пока есть
+    
     └── ParseVerbPhrase()        // правая часть
+    
         ├── проверка Verb        // обязательно должен быть глагол
+        
         └── ParseNounPhrase()    // разбор Noun phrase
+        
             └── ParseAdjectivePhrase()     // если есть прилагательные
+            
                 └── ParseAdjectivePhrase()  // рекурсивно, пока есть
 
 Тестовые примеры:
