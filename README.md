@@ -26,19 +26,19 @@ S - начальный символ.
 
 P={
 
-S → <Noun phrase> <Verb phrase>
+`S → <Noun phrase> <Verb phrase>`
 
-<Noun phrase> → <Noun> ∣ <Adjective phrase> <Noun> ∣ ε
+`<Noun phrase> → <Noun> ∣ <Adjective phrase> <Noun> ∣ ε`
 
-<Verb phrase> → <Verb> <Noun phrase>
+`<Verb phrase> → <Verb> <Noun phrase>`
 
-<Adjective phrase> → <Adjective phrase> <Adjective> ∣ ε
+`<Adjective phrase> → <Adjective phrase> <Adjective> ∣ ε`
 
-<Noun> → flight | passenger | trip | morning
+`<Noun> → flight | passenger | trip | morning`
 
-<Verb> → is | prefers | like | need | depend | fly
+`<Verb> → is | prefers | like | need | depend | fly`
 
-<Adjective> → non-stop | first | direct
+`<Adjective> → non-stop | first | direct`
 
 }
 
@@ -64,6 +64,7 @@ A ∈ Vn - нетерминальный символ,
 
 Схема вызова функций:
 
+<pre>
 Parse()                           // запуск анализа
 
 └── ParseS()                      // разбор по правилу S → Noun phrase Verb phrase
@@ -83,7 +84,8 @@ Parse()                           // запуск анализа
             └── ParseAdjectivePhrase()     // если есть прилагательные
             
                 └── ParseAdjectivePhrase()  // рекурсивно, пока есть
-
+</pre>
+    
 Тестовые примеры:
 
 Правильный:
